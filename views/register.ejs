@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Prime Pizza | SignUp </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
+    <style>
+        body{
+            background-color: white;
+        }
+        .brand{
+            
+            font-size: 45px;
+            color:black;
+            font-family: 'Gloria Hallelujah', cursive;
+        }
+
+        .active{
+            color: black;
+        }
+
+        .colorme{
+            color:black;
+            font-size: large;
+            font-weight: bolder;
+        }
+        .login{
+            margin-top: 0;
+            text-align: center;
+            top:50%;
+            left:50%;
+            width:100%;
+            padding-top:1rem;
+            padding-bottom:1rem;
+        }
+
+        .login-wrap{
+            position:relative;
+            margin:0 auto;
+            }
+
+        @media (min-width: 769px){
+
+          .login-wrap{
+            max-width:450px
+          }
+          }
+
+        form {border: 3px solid #f1f1f1;}
+
+        input[type=text], input[type=password], input[type=email] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        }
+
+        button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        }
+
+        button:hover {
+        opacity: 0.8;
+        }
+
+
+
+        .container {
+        padding: 16px;
+        }
+
+        span.psw {
+        float: right;
+        padding-top: 16px;
+        }
+
+        /* Change styles for span and cancel button on extra small screens */
+        @media screen and (max-width: 300px) {
+        span.psw {
+            display: block;
+            float: none;
+        }
+        .cancelbtn {
+            width: 100%;
+        }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="header">
+    <div class="container-fluid">
+        <nav class="navbar  navbar-expand-lg navbar-light sticky-top" style="background-color: #559ef2;">
+          <div class="container">
+          <h1><a class="navbar-brand" href="register"><span class="brand">Prime</span><span class="badge badge-secondary"> Pizza</span></a></h1>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse " id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="login"><span class="colorme">Login </span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"><span class="colorme">Help </span></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        </nav>
+        </div>
+    </div>
+
+    <div class="login">
+      <div class="login-wrap">
+        <div class="container">
+        <h1>Sign Up</h1>
+        
+        <form action="/users/register" method="POST">
+          
+            <div class="container">
+              <% if(errors.length > 0) {%>
+                <% errors.forEach(function(error) { %>
+                  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <%= error.msg %>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                <% }); %>
+              <% } %>  
+                <label for="name"><b>Name</b></label>
+                <input type="text" placeholder="Enter Name" name="name"  required>
+
+                <label for="email"><b>Email</b></label>
+                <input type="email" placeholder="Enter Email" name="email"   required>
+          
+                <label for="password"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="password"  required>
+
+                <label for="password2"><b>Confirm Password</b></label>
+                <input type="password" placeholder="Confirm Password" name="password2" required>
+                <label>
+                    By clicking Sign Up, you agree to our Terms, Data Policy and Cookie Policy. You may receive SMS notifications from us and can opt out at any time.
+                  </label>
+                <button type="submit">Sign Up</button>
+            </div>
+            <div class="container" style="background-color:#f1f1f1">
+                <span class="psw">Already have account<a href="login">   Login</a></span>
+              </div>
+          </form>
+    
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
