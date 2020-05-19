@@ -7,6 +7,7 @@ const passport = require('passport');
 
 const pizzaRouter = require('./routes/pizzaRouter');
 const pastaRouter = require('./routes/pastaRouter');
+const SeaFoodRouter = require('./routes/seafoodRouter');
 const indexRouter = require('./routes/index');
 const UserRouter = require('./routes/users');
 const app = express();
@@ -54,6 +55,7 @@ app.use('/home',indexRouter);
 app.use('/users',UserRouter);
 app.use('/pizza',pizzaRouter);
 app.use('/pasta',pastaRouter);
+app.use('/seafood',SeaFoodRouter);
 app.use(express.static(__dirname+'/public'));
 
 app.listen(PORT ,()=>{
