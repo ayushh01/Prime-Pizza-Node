@@ -4,6 +4,9 @@ const mongoose = require('mongoose');
 const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
+
+const pizzaRouter = require('./routes/pizzaRouter');
+const pastaRouter = require('./routes/pastaRouter');
 const indexRouter = require('./routes/index');
 const UserRouter = require('./routes/users');
 const app = express();
@@ -49,6 +52,8 @@ app.set('view engine','ejs');
 
 app.use('/home',indexRouter);
 app.use('/users',UserRouter);
+app.use('/pizza',pizzaRouter);
+app.use('/pasta',pastaRouter);
 app.use(express.static(__dirname+'/public'));
 
 app.listen(PORT ,()=>{

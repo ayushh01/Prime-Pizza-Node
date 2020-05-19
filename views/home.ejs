@@ -118,47 +118,42 @@
             <div class="container">
                 <h1><center>features</center></h1>
                 <hr class="my-4">
-                <h2>Pizza</h2>
+                <h2><center>Pizza</center></h2>
+                <br>
         <div class="row row-cols-1 row-cols-md-3">
+          <% for(var i=0;i<4;i++) {%>
             <div class="col mb-4">
               <div class="card">
-                <img src="..." class="card-img-top" alt="...">
+                <img src="<%= pizza[i].image_url %>" class="card-img-top" alt="<%= pizza[i].title %>" style="height: 14rem;">
                 <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <h5 class="card-title"><%= pizza[i].title %></h5>
+                  <p class="card-text"><b>Publisher</b> -- <%= pizza[i].publisher %></p>
                 </div>
               </div>
             </div>
+            <% } %>
+          </div>
+
+          <hr class="my-4">
+                <h2><center>Pasta</center></h2>
+                <br>
+        <div class="row row-cols-1 row-cols-md-3">
+          <% for(var i=0;i<4;i++) {%>
             <div class="col mb-4">
               <div class="card">
-                <img src="..." class="card-img-top" alt="...">
+                <img src="<%= pasta[i].image_url %>" class="card-img-top" alt="<%= pasta[i].title %>" style="height: 14rem;">
                 <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <h5 class="card-title"><%= pasta[i].title %></h5>
+                  <p class="card-text"><b>Publisher</b> -- <%= pasta[i].publisher %></p>
                 </div>
               </div>
             </div>
-            <div class="col mb-4">
-              <div class="card">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col mb-4">
-              <div class="card">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                </div>
-              </div>
-            </div>
+            <% } %>
           </div>
         </div>
     </div>
+
+    
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
