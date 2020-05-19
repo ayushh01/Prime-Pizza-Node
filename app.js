@@ -49,6 +49,7 @@ app.set('view engine','ejs');
 
 app.use('/home',indexRouter);
 app.use('/users',UserRouter);
+app.use(express.static(__dirname+'/public'));
 
 app.listen(PORT ,()=>{
     console.log(`Server is running at http://localhost:${PORT}`);
