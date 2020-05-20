@@ -44,4 +44,15 @@ pastaRouter.route('/')
     .catch((err)=>next(err));
 })
 
+//pasta selected
+pastaRouter.route('/:pastaId')
+.get((req,res,next)=>{
+    Pasta.findById(req.params.pastaId)
+    .then((pasta)=>{
+        console.log(pasta)
+        res.render('selectedpasta',{'pas':pasta});
+    },(err)=> next(err))
+    .catch((err)=>next(err));
+})
+
 module.exports = pastaRouter;
