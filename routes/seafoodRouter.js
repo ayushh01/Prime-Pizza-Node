@@ -42,4 +42,16 @@ SeaFoodRouter.route('/')
     .catch((err)=>next(err));
 })
 
+
+//seafood selected
+SeaFoodRouter.route('/:seafoodId')
+.get((req,res,next)=>{
+    Seafood.findById(req.params.seafoodId)
+    .then((seafood)=>{
+        res.render('selectedseafood',{'sea':seafood});
+    },(err)=> next(err))
+    .catch((err)=>next(err));
+})
+
+
 module.exports = SeaFoodRouter;

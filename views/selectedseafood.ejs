@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prime Pizza | Seafood</title>
+    <title>Prime Pizza | Sea Food</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <style>
 
@@ -230,26 +230,21 @@
 
         <hr class="my-4">
         <div class="container">
-        <a class="btn btn-primary btn-lg" href="home" role="button">Back</a>
         <div class="main2" style="margin-top: 10px;">
             
                 <h1><center>Sea Food</center></h1>
                 <hr class="my-4">
                 <br>
         <div class="row row-cols-1 row-cols-md-3">
-          <% for(var sea of seafood) {%>
             <div class="col mb-4">
               <div class="card" style="width: 15rem;">
                 <img src="<%= sea.image_url %>" class="card-img-top" alt="<%= sea.title %>" style="height: 14rem;">
                 <div class="card-body">
-                  <a href="/seafood/<%= sea.id %>">
                   <h5 class="card-title"><%= sea.title %></h5>
-                  </a>
                   <p class="card-text"><b>Publisher</b> -- <%= sea.publisher %></p>
                 </div>
               </div>
             </div>
-            <% } %>
           </div>
                     
           </div>
