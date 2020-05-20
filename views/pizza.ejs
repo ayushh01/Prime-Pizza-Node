@@ -3,22 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prime Pizza | Home</title>
+    <title>Prime Pizza | Pizza</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <style>
-        .header{
-                background-image: url('images/back1.jpg');
-                height: 600px;
-            }
 
-            .heading h1{
-                font-size: 80px;
-                color:white;
-                margin-top: 15%;
-                text-align: center;
-                font-family: 'Pangolin', cursive;
-
-            }
             /* NavBar */
 
             .brand{
@@ -207,7 +195,7 @@
     <div class="header">
         <!--  NavBar  -->
         <div class="container-fluid">
-        <nav class="navbar sticky-top navbar-expand-lg navbar-dark  ">
+        <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary  ">
           <div class="container">
           <h1><a class="navbar-brand" href="home"><span class="brand">Prime</span><span class="badge badge-secondary"> Pizza</span></a></h1>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -228,9 +216,6 @@
                 <a class="nav-link" href="#"><span class="colorme">About Us</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#" style="color: white;"><b>Welcome <%= name %></b></a>
-              </li>
-              <li class="nav-item">
                 <a href="/users/logout" class="btn btn-secondary" >Logout</a>
               </li>  
                 
@@ -239,101 +224,35 @@
         </div>
         </nav>
         </div>
-        <div class="heading">
-        <h1>Welcome to Prime Pizza</h1>
-        </div>
         </div>
         <!-- Navbar Closed -->
     
-        <div class="container">
-        <div class="jumbotron" style="background-color: white;">
-            <h1 class="display-4">Hello, <%= name %></h1>
-            <p class="lead">Yummy pizza delivered fast & fresh</p>
-            <hr class="my-4">
-            <p>We care about your taste and health ,you can customize your order according to you taste</p>
-            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-          </div>
-        </div>
-
-        <!-- jumborton ended-->
-
-        <div class="main">
-            <div class="container">
-                <h1><center>Coupons and Offers</center></h1>
-                <hr class="my-4">
-                  <div class="card-deck">
-                    <div class="card">
-                        <img src="images/coupon1.jpg" class="card-img" alt="..." style="height: 18rem;">
-                    </div>
-                    <div class="card">
-                        <img src="images/coupon2.jpg" class="card-img" alt="..." style="height: 18rem;">
-                    </div>
-                    <div class="card">
-                        <img src="images/coupon3.jpg" class="card-img" alt="..." style="height: 18rem;">
-                    </div>
-                  </div>
-            </div>
-        </div>
 
         <hr class="my-4">
+        <div class="container">
+        <a class="btn btn-primary btn-lg" href="home" role="button">Back</a>
         <div class="main2" style="margin-top: 10px;">
-            <div class="container">
-                <h1><center>features</center></h1>
+            
+                <h1><center>Pizza</center></h1>
                 <hr class="my-4">
-                <h2><center>Pizza</center></h2>
-                <a href="/pizza" class="btn btn-primary" style="float: right;">More..</a>
                 <br>
         <div class="row row-cols-1 row-cols-md-3">
-          <% for(var i=0;i<4;i++) {%>
+          <% for(var piz of pizzas) {%>
             <div class="col mb-4">
-              <div class="card">
-                <img src="<%= pizza[i].image_url %>" class="card-img-top" alt="<%= pizza[i].title %>" style="height: 14rem;">
+              <div class="card" style="width: 15rem;">
+                <img src="<%= piz.image_url %>" class="card-img-top" alt="<%= piz.title %>" style="height: 14rem;">
                 <div class="card-body">
-                  <h5 class="card-title"><%= pizza[i].title %></h5>
-                  <p class="card-text"><b>Publisher</b> -- <%= pizza[i].publisher %></p>
+                  <h5 class="card-title"><%= piz.title %></h5>
+                  <p class="card-text"><b>Publisher</b> -- <%= piz.publisher %></p>
                 </div>
               </div>
             </div>
             <% } %>
           </div>
-
-          <hr class="my-4">
-                <h2><center>Pasta</center></h2>
-                <a href="/pasta" class="btn btn-primary" style="float: right;" >More..</a>
-                <br>
-        <div class="row row-cols-1 row-cols-md-3">
-          <% for(var i=0;i<4;i++) {%>
-            <div class="col mb-4">
-              <div class="card">
-                <img src="<%= pasta[i].image_url %>" class="card-img-top" alt="<%= pasta[i].title %>" style="height: 14rem;">
-                <div class="card-body">
-                  <h5 class="card-title"><%= pasta[i].title %></h5>
-                  <p class="card-text"><b>Publisher</b> -- <%= pasta[i].publisher %></p>
-                </div>
-              </div>
-            </div>
-            <% } %>
+                    
           </div>
-
-          <hr class="my-4">
-                <h2><center>Sea Food</center></h2>
-                <a href="/seafood" class="btn btn-primary" style="float: right;" >More..</a>
-                <br>
-        <div class="row row-cols-1 row-cols-md-3">
-          <% for(var i=0;i<4;i++) {%>
-            <div class="col mb-4">
-              <div class="card">
-                <img src="<%= seafood[i].image_url %>" class="card-img-top" alt="<%= seafood[i].title %>" style="height: 14rem;">
-                <div class="card-body">
-                  <h5 class="card-title"><%= seafood[i].title %></h5>
-                  <p class="card-text"><b>Publisher</b> -- <%= seafood[i].publisher %></p>
-                </div>
-              </div>
-            </div>
-            <% } %>
           </div>
-        </div>
-    </div>
+          
 
     <!-- Footer-->
 

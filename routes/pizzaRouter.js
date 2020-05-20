@@ -12,21 +12,20 @@ pizzaRouter.use(bodyParser.json());
 pizzaRouter.route('/')
 .get((req,res,next)=>{
     Pizzas.find({})
-    .then((dishes)=>{
-        res.statusCode = 200;
-        res.setHeader('Content-type','application/json');
-        res.json(dishes);
+    .then((pizza)=>{
+        console.log(pizza)
+        res.render('pizza' , { 'pizzas': pizza });
     },(err)=> next(err))
     .catch((err)=>next(err));
 })
 
 .post((req,res,next)=>{
     Pizzas.create(req.body)
-    .then((dish)=>{
-        console.log("Dish created :", dish)
+    .then((pizza)=>{
+        console.log("Dish created :", pizza)
         res.statusCode = 200;
         res.setHeader('Content-type','application/json');
-        res.json(dish);
+        res.json(pizza);
     },(err)=> next(err))
     .catch((err)=>next(err));
 })
