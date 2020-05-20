@@ -48,7 +48,19 @@ SeaFoodRouter.route('/:seafoodId')
 .get((req,res,next)=>{
     Seafood.findById(req.params.seafoodId)
     .then((seafood)=>{
-        res.render('selectedseafood',{'sea':seafood});
+        Seafood.find({publisher:seafood.publisher})
+        .then((seaf)=>{
+            if(seaf != null) {
+            res.render('selectedseafood',{'sea':seafood ,'seaf':seaf });
+            }
+            else
+            {
+                Seafood.find({})
+                .then((seaf)=>{
+                    res.render('selectedseafood',{'sea':seafood ,'seaf':seaf });
+                })
+            }
+        })
     },(err)=> next(err))
     .catch((err)=>next(err));
 })

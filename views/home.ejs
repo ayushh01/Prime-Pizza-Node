@@ -289,7 +289,9 @@
               <div class="card">
                 <img src="<%= pizza[i].image_url %>" class="card-img-top" alt="<%= pizza[i].title %>" style="height: 14rem;">
                 <div class="card-body">
+                  <a href="/pizza/<%= pizza[i].id %>">
                   <h5 class="card-title"><%= pizza[i].title %></h5>
+                </a>
                   <p class="card-text"><b>Publisher</b> -- <%= pizza[i].publisher %></p>
                 </div>
               </div>
@@ -307,7 +309,9 @@
               <div class="card">
                 <img src="<%= pasta[i].image_url %>" class="card-img-top" alt="<%= pasta[i].title %>" style="height: 14rem;">
                 <div class="card-body">
+                  <a href="/pasta/<%= pasta[i].id %>">
                   <h5 class="card-title"><%= pasta[i].title %></h5>
+                  </a>
                   <p class="card-text"><b>Publisher</b> -- <%= pasta[i].publisher %></p>
                 </div>
               </div>
@@ -325,7 +329,9 @@
               <div class="card">
                 <img src="<%= seafood[i].image_url %>" class="card-img-top" alt="<%= seafood[i].title %>" style="height: 14rem;">
                 <div class="card-body">
+                  <a href="/seafood/<%= seafood[i].id %>">
                   <h5 class="card-title"><%= seafood[i].title %></h5>
+                  </a>
                   <p class="card-text"><b>Publisher</b> -- <%= seafood[i].publisher %></p>
                 </div>
               </div>
