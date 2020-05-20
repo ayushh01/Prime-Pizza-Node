@@ -12,21 +12,19 @@ pastaRouter.use(bodyParser.json());
 pastaRouter.route('/')
 .get((req,res,next)=>{
     Pasta.find({})
-    .then((dishes)=>{
-        res.statusCode = 200;
-        res.setHeader('Content-type','application/json');
-        res.json(dishes);
+    .then((pasta)=>{
+        res.render('pasta',{'pasta':pasta});
     },(err)=> next(err))
     .catch((err)=>next(err));
 })
 
 .post((req,res,next)=>{
     Pasta.create(req.body)
-    .then((dish)=>{
-        console.log("Dish created :", dish)
+    .then((pasta)=>{
+        console.log("Dish created :", pasta)
         res.statusCode = 200;
         res.setHeader('Content-type','application/json');
-        res.json(dish);
+        res.json(pasta);
     },(err)=> next(err))
     .catch((err)=>next(err));
 })
