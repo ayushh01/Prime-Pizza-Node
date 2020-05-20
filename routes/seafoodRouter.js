@@ -50,7 +50,8 @@ SeaFoodRouter.route('/:seafoodId')
     .then((seafood)=>{
         Seafood.find({publisher:seafood.publisher})
         .then((seaf)=>{
-            if(seaf != null) {
+            if(seaf.length>3) {
+                console.log(seaf);
             res.render('selectedseafood',{'sea':seafood ,'seaf':seaf });
             }
             else
