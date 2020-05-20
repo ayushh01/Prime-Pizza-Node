@@ -45,4 +45,18 @@ pizzaRouter.route('/')
     .catch((err)=>next(err));
 })
 
+
+//Pizza selected 
+
+
+pizzaRouter.route('/:pizzaId')
+.get((req,res,next)=>{
+    Pizzas.findById(req.params.pizzaId)
+    .then((pizza)=>{
+        console.log(pizza)
+        res.render('selectedpizza',{'piz':pizza});
+    },(err)=> next(err))
+    .catch((err)=>next(err));
+})
+
 module.exports = pizzaRouter;

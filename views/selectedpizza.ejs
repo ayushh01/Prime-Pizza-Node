@@ -230,14 +230,12 @@
 
         <hr class="my-4">
         <div class="container">
-        <a class="btn btn-primary btn-lg" href="home" role="button">Back</a>
         <div class="main2" style="margin-top: 10px;">
             
                 <h1><center>Pizza</center></h1>
                 <hr class="my-4">
                 <br>
         <div class="row row-cols-1 row-cols-md-3">
-          <% for(var piz of pizzas) {%>
             <div class="col mb-4">
               <div class="card" style="width: 15rem;">
                 <img src="<%= piz.image_url %>" class="card-img-top" alt="<%= piz.title %>" style="height: 14rem;">
@@ -249,8 +247,6 @@
                 </div>
               </div>
             </div>
-          
-            <% } %>
           </div>
                     
           </div>

@@ -12,21 +12,17 @@ SeaFoodRouter.use(bodyParser.json());
 SeaFoodRouter.route('/')
 .get((req,res,next)=>{
     Seafood.find({})
-    .then((dishes)=>{
-        res.statusCode = 200;
-        res.setHeader('Content-type','application/json');
-        res.json(dishes);
+    .then((seafood)=>{
+        res.render('seafood',{'seafood':seafood});
     },(err)=> next(err))
     .catch((err)=>next(err));
 })
 
 .post((req,res,next)=>{
     Seafood.create(req.body)
-    .then((dish)=>{
-        console.log("Dish created :", dish)
-        res.statusCode = 200;
-        res.setHeader('Content-type','application/json');
-        res.json(dish);
+    .then((seafood)=>{
+        console.log("Dish created :", seafood)
+        res.json(seafood);
     },(err)=> next(err))
     .catch((err)=>next(err));
 })
