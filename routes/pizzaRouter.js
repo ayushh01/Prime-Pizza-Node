@@ -53,8 +53,19 @@ pizzaRouter.route('/:pizzaId')
 .get((req,res,next)=>{
     Pizzas.findById(req.params.pizzaId)
     .then((pizza)=>{
-        console.log(pizza)
-        res.render('selectedpizza',{'piz':pizza});
+        Pizzas.find({publisher:pizza.publisher})
+        .then((pizz)=>{
+            if(pizz.length>3) {
+            res.render('selectedpizza',{'piz':pizza ,'pizz':pizz });
+            }
+            else
+            {
+                Pizzas.find({})
+                .then((pizz)=>{
+                    res.render('selectedpizza',{'piz':pizza ,'pizz':pizz });
+                })
+            }
+        })
     },(err)=> next(err))
     .catch((err)=>next(err));
 })

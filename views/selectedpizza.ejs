@@ -235,21 +235,54 @@
                 <h1><center>Pizza</center></h1>
                 <hr class="my-4">
                 <br>
-        <div class="row row-cols-1 row-cols-md-3">
-            <div class="col mb-4">
-              <div class="card" style="width: 15rem;">
-                <img src="<%= piz.image_url %>" class="card-img-top" alt="<%= piz.title %>" style="height: 14rem;">
-                <div class="card-body">
-                  <h5 class="card-title"><%= piz.title %></h5>
-                  <p class="card-text"><b>Publisher</b> -- <%= piz.publisher %></p>
+                <div class="row row-cols-1 row-cols-md-3">
+                  <div class="col mb-4">
+                    <div class="card">
+                      <img class="align-self-start mr-3" src="<%= piz.image_url %>" alt="<%= piz.title %>" style="width: 23rem;height: 25rem;">
+                    </div>
+                  </div>
+                  <div class="col mb-4">
+                    <div class="card">
+                      <h4 class="mt-0">Dish Title:- <u><%= piz.title %></u></h4>
+                      <br>
+                      <h3>Everything you want to know about dish.</h3>
+                      <br>
+                      <p><b>Publisher</b> -- <%= piz.publisher %></p>
+                      <p><b>Publisher Url</b> -- <a href="<%= piz.publisher_url %>" target="_blank"><%= piz.publisher_url %></a></p>
+                      <p><b>Source Url</b> -- <a href="<%= piz.source_url %>" target="_blank"><%= piz.source_url %></a></p>
+                      <h3><b>Social Rank:- </b><%= piz.social_rank %></h3>
+                    </div>
+                  </div>
+
                 </div>
-              </div>
-            </div>
-          </div>
                     
           </div>
           </div>
           
+
+          <div class="main2" style="margin-top: 10px;">
+            <div class="container">
+          <hr class="my-4">
+                <h2><center>Related Dishes</center></h2>
+                <br>
+        <div class="row row-cols-1 row-cols-md-3">
+          <% for(var i=0;i<4;i++) {%>
+            <div class="col mb-4">
+              <div class="card">
+                <img src="<%= pizz[i].image_url %>" class="card-img-top" alt="<%= pizz[i].title %>" style="height: 14rem;">
+                <div class="card-body">
+                  <a href="/pizza/<%= pizz[i].id %>">
+                  <h5 class="card-title"><%= pizz[i].title %></h5>
+                  </a>
+                  <p class="card-text"><b>Publisher</b> -- <%= pizz[i].publisher %></p>
+                </div>
+              </div>
+            </div>
+            <% } %>
+          </div>
+          <br>
+        </div>
+      </div>
 
     <!-- Footer-->
 
