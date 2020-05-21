@@ -24,6 +24,13 @@
                 font-size: large;
                 font-weight: bolder;
             }
+
+            @media (min-width: 769px){
+
+                .card img{
+                  max-width:450px
+                }
+                }
             .site-footer
               {
                 background-color:#26272b;
@@ -235,7 +242,29 @@
                 <h1><center><%= sea.title %></center></h1>
                 <hr class="my-4">
                 <br>
+                
+                <div class="row row-cols-1 row-cols-md-3">
+                    <div class="col mb-4">
+                      <div class="card">
+                        <img class="align-self-start mr-3" src="<%= sea.image_url %>" alt="<%= sea.title %>" style="width: 23rem;height: 25rem;">
+                      </div>
+                    </div>
+                    <div class="col mb-4">
+                      <div class="card">
+                        <h4 class="mt-0">Dish Title:- <u><%= sea.title %></u></h4>
+                        <br>
+                        <h3>Everything you want to know about dish.</h3>
+                        <br>
+                        <p><b>Publisher</b> -- <%= sea.publisher %></p>
+                        <p><b>Publisher Url</b> -- <a href="<%= sea.publisher_url %>" target="_blank"><%= sea.publisher_url %></a></p>
+                        <p><b>Source Url</b> -- <a href="<%= sea.source_url %>" target="_blank"><%= sea.source_url %></a></p>
+                        <h3><b>Social Rank:- </b><%= sea.social_rank %></h3>
+                      </div>
+                    </div>
 
+                  </div>
+
+                <!--
                 <div class="media">
                   <img class="align-self-start mr-3" src="<%= sea.image_url %>" alt="<%= sea.title %>" style="width: 34rem;height: 30rem;">
                   <div class="media-body">
@@ -250,6 +279,7 @@
                   </div>
                 </div>
 
+              -->
           <!--  
         <div class="row row-cols-1 row-cols-md-3">
             <div class="col mb-4">
