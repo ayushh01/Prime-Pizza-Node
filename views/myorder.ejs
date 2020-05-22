@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prime Pizza | Sea Food</title>
+    <title>Prime Pizza | My Orders</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <style>
 
@@ -24,13 +24,11 @@
                 font-size: large;
                 font-weight: bolder;
             }
-
-            @media (min-width: 769px){
-
-                .card img{
-                  max-width:450px
-                }
-                }
+            .colorme1{
+                color:black;
+                font-size: large;
+                font-weight: bolder;
+            }
             .site-footer
               {
                 background-color:#26272b;
@@ -204,17 +202,17 @@
         <div class="container-fluid">
         <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary  ">
           <div class="container">
-          <h1><a class="navbar-brand" href="/home"><span class="brand">Prime</span><span class="badge badge-secondary"> Pizza</span></a></h1>
+          <h1><a class="navbar-brand" href="home"><span class="brand">Prime</span><span class="badge badge-secondary"> Pizza</span></a></h1>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse " id="navbarNav">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item active">
-                <a class="nav-link" href="/home"><span class="colorme">Home</span></a>
+                <a class="nav-link" href="home"><span class="colorme">Home</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/myorder"><span class="colorme">My Order</span></a>
+                <a class="nav-link" href="/myorder"><span class="colorme1">My Orders</span></a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/contactus"><span class="colorme">Contact Us</span></a>
@@ -234,149 +232,32 @@
 
         <hr class="my-4">
         <div class="container">
+        <a class="btn btn-primary btn-lg" href="home" role="button">Back</a>
         <div class="main2" style="margin-top: 10px;">
             
-                <h1><center><%= sea.title %></center></h1>
+                <h1><center>My Orders</center></h1>
                 <hr class="my-4">
                 <br>
-                
-                <div class="row row-cols-1 row-cols-md-3">
-                    <div class="col mb-4">
-                      <div class="card">
-                        <img class="align-self-start mr-3" src="<%= sea.image_url %>" alt="<%= sea.title %>" style="width: 23rem;height: 25rem;">
-                      </div>
-                    </div>
-                    <div class="col mb-4">
-                      <div class="card">
-                        <h4 class="mt-0">Dish Title:- <u><%= sea.title %></u></h4>
-                        <br>
-                        <h3>Everything you want to know about dish.</h3>
-                        <br>
-                        <p><b>Publisher</b> -- <%= sea.publisher %></p>
-                        <p><b>Publisher Url</b> -- <a href="<%= sea.publisher_url %>" target="_blank"><%= sea.publisher_url %></a></p>
-                        <p><b>Source Url</b> -- <a href="<%= sea.source_url %>" target="_blank"><%= sea.source_url %></a></p>
-                        <h3><b>Social Rank:- </b><%= sea.social_rank %></h3>
-                        <br>
-                        <!-- Button trigger modal --><center>
-                        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ModalLoginForm" style="width:8rem;">
-                          Buy
-                      </button></center>
-
-                        <!-- Modal -->
-                        <div id="ModalLoginForm" class="modal fade">
-                          <div class="modal-dialog" role="document">
-                              <div class="modal-content">
-                                  <div class="modal-header">
-                                      <h1 class="modal-title">Order</h1>
-                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                      </button>
-                                  </div>
-                                  <div class="modal-body">
-                                      <form role="form" method="POST" action="/myorder">
-                                          <input type="hidden" name="_token" value="">
-                                          <div class="form-group">
-                                            <center><label class="control-label">Total - 5$</label></center>
-                                            <hr>
-                                            <label class="control-label">Name</label>
-                                              <div>
-                                                  <input type="text" class="form-control input-lg"  name="name" value="<%= name %>">
-                                              </div>
-                                              <label class="control-label">E-Mail Address</label>
-                                              <div>
-                                                  <input type="text" class="form-control input-lg"  name="email" value="<%= email %>">
-                                              </div>
-                                              <label class="control-label">Dish</label>
-                                              <div>
-                                                <input type="text" class="form-control input-lg"  name="dish" value="sea food">
-                                            </div>
-                                          </div>
-                                          <div class="form-group">
-                                              <label class="control-label">Address</label>
-                                              <div>
-                                                  <input type="text" class="form-control input-lg" name="address">
-                                              </div>
-                                          </div>
-                                          <input type="radio" id="cod" name="payment" value="cod">
-                                          <label for="cod">Cash on delivery</label><br>
-                                          <input type="radio" id="online" name="payment" value="online">
-                                          <label for="online">Card Payment</label><br>
-                                          <div class="form-group">
-                                              <div>
-                                                  <button type="submit" class="btn btn-success">Confirm</button>
-                                              </div>
-                                          </div>
-                                      </form>
-                                      
-                                  </div>
-                              </div><!-- /.modal-content -->
-                          </div><!-- /.modal-dialog -->
-                      </div><!-- /.modal -->
-
-
-                        <!--     Modal end -->
-                      </div>
-                    </div>
-
-                  </div>
-
-                <!--
+        <div class="row row-cols-1 row-cols-md-3">
+          <% for(var myor of myorder) {%>
+         
                 <div class="media">
-                  <img class="align-self-start mr-3" src="<%= sea.image_url %>" alt="<%= sea.title %>" style="width: 34rem;height: 30rem;">
+                  <img class="align-self-start mr-3" src="images/confirmed.jpg" style="width: 8rem;height:8rem;" >
                   <div class="media-body">
-                    <h4 class="mt-0">Dish Title:- <u><%= sea.title %></u></h4>
+                    <h4 class="mt-0">Order Placed</h4>
                     <br>
-                    <h3>Everything you want to know about dish.</h3>
-                    <br>
-                    <p><b>Publisher</b> -- <%= sea.publisher %></p>
-                    <p><b>Publisher Url</b> -- <a href="<%= sea.publisher_url %>" target="_blank"><%= sea.publisher_url %></a></p>
-                    <p><b>Source Url</b> -- <a href="<%= sea.source_url %>" target="_blank"><%= sea.source_url %></a></p>
-                    <h3><b>Social Rank:- </b><%= sea.social_rank %></h3>
+                    <p><b>Name</b> -- <%= myor.name %></p>
+                    <p><b>Address</b> --<%= myor.address %> </p>
+                    <p><b>Dish </b> --<%= myor.dish %> </p>
                   </div>
                 </div>
-
-              -->
-          <!--  
-        <div class="row row-cols-1 row-cols-md-3">
-            <div class="col mb-4">
-              <div class="card" style="width: 15rem;">
-                <img src="<%= sea.image_url %>" class="card-img-top" alt="<%= sea.title %>" style="height: 14rem;">
-                <div class="card-body">
-                  <h5 class="card-title"><%= sea.title %></h5>
-                  <p class="card-text"><b>Publisher</b> -- <%= sea.publisher %></p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        -->
-          </div>
-          </div>
-
-
-          <div class="main2" style="margin-top: 10px;">
-            <div class="container">
-          <hr class="my-4">
-                <h2><center>Related Dishes</center></h2>
-                <br>
-        <div class="row row-cols-1 row-cols-md-3">
-          <% for(var i=0;i<4;i++) {%>
-            <div class="col mb-4">
-              <div class="card">
-                <img src="<%= seaf[i].image_url %>" class="card-img-top" alt="<%= seaf[i].title %>" style="height: 14rem;">
-                <div class="card-body">
-                  <a href="/seafood/<%= seaf[i].id %>">
-                  <h5 class="card-title"><%= seaf[i].title %></h5>
-                  </a>
-                  <p class="card-text"><b>Publisher</b> -- <%= seaf[i].publisher %></p>
-                </div>
-              </div>
-            </div>
+                <hr class="my-4">
             <% } %>
           </div>
-          <br>
-        </div>
-      </div>
+                    
+          </div>
+          </div>
+          
 
     <!-- Footer-->
 
@@ -389,7 +270,7 @@
               <p class="text-justify">This is a Web Development Project Built using HTML5,CSS3 ,javaScript , Nodejs , expressjs , mongodb. In this project you can order online Your favourite dishes. You can also customize your order before ordering,we gives fastest delivery possible .</p>
             </div>
   
-            
+           
   
             <div class="col-xs-6 col-md-3">
               <h6>Quick Links</h6>

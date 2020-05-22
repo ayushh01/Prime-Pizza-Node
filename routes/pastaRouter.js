@@ -3,14 +3,14 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 const Pasta = require('../models/pasta');
-
+const auth = require('../config/auth');
 
 const pastaRouter = express.Router();
 
 pastaRouter.use(bodyParser.json());
 
 pastaRouter.route('/')
-.get((req,res,next)=>{
+.get(auth.ensureAuthenticated,(req,res,next)=>{
     Pasta.find({})
     .then((pasta)=>{
         res.render('pasta',{'pasta':pasta});
@@ -18,7 +18,7 @@ pastaRouter.route('/')
     .catch((err)=>next(err));
 })
 
-.post((req,res,next)=>{
+.post(auth.ensureAuthenticated,(req,res,next)=>{
     Pasta.create(req.body)
     .then((pasta)=>{
         console.log("Dish created :", pasta)
@@ -29,12 +29,12 @@ pastaRouter.route('/')
     .catch((err)=>next(err));
 })
 
-.put((req,res,next)=>{
+.put(auth.ensureAuthenticated,(req,res,next)=>{
     res.statusCode = 403;
     res.end("Put is not for /dishes");
 })
 
-.delete((req,res,next)=>{
+.delete(auth.ensureAuthenticated,(req,res,next)=>{
     Pasta.remove({})
     .then((resp)=>{
         res.statusCode = 200;
@@ -46,11 +46,22 @@ pastaRouter.route('/')
 
 //pasta selected
 pastaRouter.route('/:pastaId')
-.get((req,res,next)=>{
+.get(auth.ensureAuthenticated,(req,res,next)=>{
     Pasta.findById(req.params.pastaId)
     .then((pasta)=>{
-        console.log(pasta)
-        res.render('selectedpasta',{'pas':pasta});
+        Pasta.find({publisher:pasta.publisher})
+        .then((pass)=>{
+            if(pass.length>3) {
+                res.render('selectedpasta',{'name': req.user.name ,'email':req.user.email ,'pas':pasta , 'pass':pass});
+            }
+            else
+            {
+                Pasta.find({})
+                .then((pass)=>{
+                    res.render('selectedpasta',{'name': req.user.name ,'email':req.user.email ,'pas':pasta , 'pass':pass});
+                })
+            }
+        })
     },(err)=> next(err))
     .catch((err)=>next(err));
 })

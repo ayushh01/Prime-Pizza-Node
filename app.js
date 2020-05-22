@@ -10,6 +10,9 @@ const pastaRouter = require('./routes/pastaRouter');
 const SeaFoodRouter = require('./routes/seafoodRouter');
 const indexRouter = require('./routes/index');
 const UserRouter = require('./routes/users');
+const OrderRouter = require('./routes/order');
+const ContactRouter = require('./routes/contactus');
+const RedirectRouter = require('./routes/redirect');
 const app = express();
 
 const PORT = process.env.PORT || 3000;
@@ -50,12 +53,14 @@ app.use((req,res,next)=>{
 //EJS
 app.set('view engine','ejs');
 
-
+app.use('/',RedirectRouter);
 app.use('/home',indexRouter);
 app.use('/users',UserRouter);
 app.use('/pizza',pizzaRouter);
 app.use('/pasta',pastaRouter);
 app.use('/seafood',SeaFoodRouter);
+app.use('/myorder',OrderRouter);
+app.use('/contactus',ContactRouter);
 app.use(express.static(__dirname+'/public'));
 
 app.listen(PORT ,()=>{

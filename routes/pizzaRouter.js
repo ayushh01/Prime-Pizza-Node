@@ -4,13 +4,14 @@ const mongoose = require('mongoose');
 
 const Pizzas = require('../models/pizza');
 
+const auth = require('../config/auth');
 
 const pizzaRouter = express.Router();
 
 pizzaRouter.use(bodyParser.json());
 
 pizzaRouter.route('/')
-.get((req,res,next)=>{
+.get(auth.ensureAuthenticated,(req,res,next)=>{
     Pizzas.find({})
     .then((pizza)=>{
         console.log(pizza)
@@ -19,7 +20,7 @@ pizzaRouter.route('/')
     .catch((err)=>next(err));
 })
 
-.post((req,res,next)=>{
+.post(auth.ensureAuthenticated,(req,res,next)=>{
     Pizzas.create(req.body)
     .then((pizza)=>{
         console.log("Dish created :", pizza)
@@ -30,12 +31,12 @@ pizzaRouter.route('/')
     .catch((err)=>next(err));
 })
 
-.put((req,res,next)=>{
+.put(auth.ensureAuthenticated,(req,res,next)=>{
     res.statusCode = 403;
     res.end("Put is not for /dishes");
 })
 
-.delete((req,res,next)=>{
+.delete(auth.ensureAuthenticated,(req,res,next)=>{
     Pizzas.remove({})
     .then((resp)=>{
         res.statusCode = 200;
@@ -50,19 +51,19 @@ pizzaRouter.route('/')
 
 
 pizzaRouter.route('/:pizzaId')
-.get((req,res,next)=>{
+.get(auth.ensureAuthenticated,(req,res,next)=>{
     Pizzas.findById(req.params.pizzaId)
     .then((pizza)=>{
         Pizzas.find({publisher:pizza.publisher})
         .then((pizz)=>{
             if(pizz.length>3) {
-            res.render('selectedpizza',{'piz':pizza ,'pizz':pizz });
+            res.render('selectedpizza',{'name': req.user.name ,'email':req.user.email ,'piz':pizza ,'pizz':pizz });
             }
             else
             {
                 Pizzas.find({})
                 .then((pizz)=>{
-                    res.render('selectedpizza',{'piz':pizza ,'pizz':pizz });
+                    res.render('selectedpizza',{'name': req.user.name ,'email':req.user.email ,'piz':pizza ,'pizz':pizz });
                 })
             }
         })

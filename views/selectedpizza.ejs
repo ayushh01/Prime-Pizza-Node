@@ -197,23 +197,20 @@
         <div class="container-fluid">
         <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary  ">
           <div class="container">
-          <h1><a class="navbar-brand" href="home"><span class="brand">Prime</span><span class="badge badge-secondary"> Pizza</span></a></h1>
+          <h1><a class="navbar-brand" href="/home"><span class="brand">Prime</span><span class="badge badge-secondary"> Pizza</span></a></h1>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse " id="navbarNav">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item active">
-                <a class="nav-link" href="home"><span class="colorme">Home</span></a>
+                <a class="nav-link" href="/home"><span class="colorme">Home</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#"><span class="colorme">Menu</span></a>
+                <a class="nav-link" href="/myorder"><span class="colorme">My Order</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#"><span class="colorme">Contact Us</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#"><span class="colorme">About Us</span></a>
+                <a class="nav-link" href="/contactus"><span class="colorme">Contact Us</span></a>
               </li>
               <li class="nav-item">
                 <a href="/users/logout" class="btn btn-secondary" >Logout</a>
@@ -251,6 +248,61 @@
                       <p><b>Publisher Url</b> -- <a href="<%= piz.publisher_url %>" target="_blank"><%= piz.publisher_url %></a></p>
                       <p><b>Source Url</b> -- <a href="<%= piz.source_url %>" target="_blank"><%= piz.source_url %></a></p>
                       <h3><b>Social Rank:- </b><%= piz.social_rank %></h3>
+                      <!-- Button trigger modal --><center>
+                        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ModalLoginForm" style="width:8rem;">
+                          Buy
+                      </button></center>
+
+                        <!-- Modal -->
+                        <div id="ModalLoginForm" class="modal fade">
+                          <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h1 class="modal-title">Order</h1>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                  </div>
+                                  <div class="modal-body">
+                                      <form role="form" method="POST" action="/myorder">
+                                          <input type="hidden" name="_token" value="">
+                                          <div class="form-group">
+                                            <center><label class="control-label">Total - 5$</label></center>
+                                            <hr>
+                                            <label class="control-label">Name</label>
+                                              <div>
+                                                  <input type="text" class="form-control input-lg"  name="name" value="<%= name %>">
+                                              </div>
+                                              <label class="control-label">E-Mail Address</label>
+                                              <div>
+                                                  <input type="text" class="form-control input-lg"  name="email" value="<%= email %>">
+                                              </div>
+                                              <label class="control-label">Dish</label>
+                                              <div>
+                                                <input type="text" class="form-control input-lg"  name="dish" value="pizza">
+                                            </div>
+                                          </div>
+                                          <div class="form-group">
+                                              <label class="control-label">Address</label>
+                                              <div>
+                                                  <input type="text" class="form-control input-lg" name="address">
+                                              </div>
+                                          </div>
+                                          <input type="radio" id="cod" name="payment" value="cod">
+                                          <label for="cod">Cash on delivery</label><br>
+                                          <input type="radio" id="online" name="payment" value="online">
+                                          <label for="online">Card Payment</label><br>
+                                          <div class="form-group">
+                                              <div>
+                                                  <button type="submit" class="btn btn-success">Confirm</button>
+                                              </div>
+                                          </div>
+                                      </form>
+                                      
+                                  </div>
+                              </div><!-- /.modal-content -->
+                          </div><!-- /.modal-dialog -->
+                      </div><!-- /.modal -->
                     </div>
                   </div>
 
@@ -295,26 +347,15 @@
               <p class="text-justify">This is a Web Development Project Built using HTML5,CSS3 ,javaScript , Nodejs , expressjs , mongodb. In this project you can order online Your favourite dishes. You can also customize your order before ordering,we gives fastest delivery possible .</p>
             </div>
   
-            <div class="col-xs-6 col-md-3">
-              <h6>Categories</h6>
-              <ul class="footer-links">
-                <li><a href="http://scanfcode.com/category/c-language/">C</a></li>
-                <li><a href="http://scanfcode.com/category/front-end-development/">UI Design</a></li>
-                <li><a href="http://scanfcode.com/category/back-end-development/">PHP</a></li>
-                <li><a href="http://scanfcode.com/category/java-programming-language/">Java</a></li>
-                <li><a href="http://scanfcode.com/category/android/">Android</a></li>
-                <li><a href="http://scanfcode.com/category/templates/">Templates</a></li>
-              </ul>
-            </div>
   
             <div class="col-xs-6 col-md-3">
               <h6>Quick Links</h6>
               <ul class="footer-links">
-                <li><a href="http://scanfcode.com/about/">About Us</a></li>
-                <li><a href="http://scanfcode.com/contact/">Contact Us</a></li>
-                <li><a href="http://scanfcode.com/contribute-at-scanfcode/">Contribute</a></li>
-                <li><a href="http://scanfcode.com/privacy-policy/">Privacy Policy</a></li>
-                <li><a href="http://scanfcode.com/sitemap/">Sitemap</a></li>
+                <li><a href="">About Us</a></li>
+                <li><a href="">Contact Us</a></li>
+                <li><a href="">Contribute</a></li>
+                <li><a href="">Privacy Policy</a></li>
+                <li><a href="">Sitemap</a></li>
               </ul>
             </div>
           </div>
